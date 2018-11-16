@@ -1,5 +1,17 @@
 {% block content %}
-<h2>New Deployment</h2>
+<h1>Deployment Instruction</h1>
+
+<h2> Windows</h2>
+<pre>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</pre>
+<h2> Linux </h2>
+<pre> ssh-keygen -t rsa -b 4096 -C "your_email@example.com" </pre>
+<h2> Mac </h2>
+<pre> ssh-keygen -t rsa -b 4096 -C "your_email@example.com" </pre>
+
+<h3> Copy SSH Key and Paste below</h3>
+<p> cat /path/to/ssh.pub</p>
+
+<br>
 <form method="POST" class="post-form">{% csrf_token %} {{ form.as_p }}
     <button type="submit" class="save btn btn-default">Save</button>
 </form>
