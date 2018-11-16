@@ -1,9 +1,14 @@
-{% block title %}Login{% endblock %} {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
-<p>
-    <a href="{% url 'signup' %}"> Click here to Sign up</a></p>
-{% endblock %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<title> Deployer Login</title>
+
+<body>
+    {% load crispy_forms_tags %} {% block title %}Login{% endblock %} {% block content %}
+    <form method="post">
+        {% csrf_token %} {% crispy form %}
+        <button type="submit">Login</button>
+    </form>
+    <p>
+        <a href="{% url 'signup' %}"> Click here to Sign up</a></p>
+    {% endblock %}
+</body>

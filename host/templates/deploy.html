@@ -1,18 +1,27 @@
-{% block content %}
-<h1>Deployment Instruction</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-<h2> Windows</h2>
-<pre>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</pre>
-<h2> Linux </h2>
-<pre> ssh-keygen -t rsa -b 4096 -C "your_email@example.com" </pre>
-<h2> Mac </h2>
-<pre> ssh-keygen -t rsa -b 4096 -C "your_email@example.com" </pre>
+<head>
+    <title>Deployer</title>
+</head>
 
-<h3> Copy SSH Key and Paste below</h3>
-<p> cat /path/to/ssh.pub</p>
+<body>
+    {% load crispy_forms_tags %} {% block content %}
+    <h1>Deployer Instruction</h1>
 
-<br>
-<form method="POST" class="post-form">{% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="save btn btn-default">Save</button>
-</form>
-{% endblock %}
+    <h2> Windows</h2>
+    <pre>ssh-keygen -t rsa -b 4096</pre>
+    <h2> Linux </h2>
+    <pre> ssh-keygen -t rsa -b 4096</pre>
+    <h2> Mac </h2>
+    <pre> ssh-keygen -t rsa -b 4096</pre>
+
+    <h3> Copy SSH Key and Paste below e.g.</h3> <br>
+    <pre> cat /path/to/ssh.pub</pre>
+
+    <br>
+    <form method="POST" class="post-form">{% csrf_token %} {% crispy form %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    {% endblock %}
+</body>
