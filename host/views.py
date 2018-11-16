@@ -17,7 +17,7 @@ def new_deploy(request):
             deploy = form.save(commit=False)
             deploy.owner = request.user
             deploy.save()
-            return HttpResponse("Done!")
+            return HttpResponse("<pre> Get Ready to deploy your heroku-like repos </pre> <br> <p> Run the following command on your folder to add our remote url: </p> <h3> git remote add deploy dokku@deployer.host:{}</h3> <p> To Deploy: </p> <h3> git push deploy master </h3>".format(request.user))
     else:
         if deploy:
             form = DeployForm(instance=deploy)
@@ -34,8 +34,8 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            uzer = get_object_or_404(User, username=request.user)
-            print(uzer)
+            uzernname = '{}'.format(request.user)
+            uzer = get_object_or_404(User, username=uzernname)
             initial_deploy = Deploy(owner=uzer, ssh_key='')
             initial_deploy.save()
             return redirect('/')
