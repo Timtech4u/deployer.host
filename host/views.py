@@ -19,9 +19,9 @@ def new_deploy(request):
             deploy.save()
             ssh_key = form.cleaned_data.get('ssh_key')
             user = request.user
-            os.system("sudo {} {}".format("dokku apps:create", user))
-            os.system("sudo echo {} >> ~/{}.pub".format(ssh_key, user))
-            os.system("sudo dokku ssh-keys:add {} ~/{}.pub".format(user, user))
+            os.system("{} {}".format("dokku apps:create", user))
+            os.system("echo {} >> ~/{}.pub".format(ssh_key, user))
+            os.system("dokku ssh-keys:add {} ~/{}.pub".format(user, user))
             return HttpResponse("<pre> Get Ready to deploy your heroku-like repos </pre> <br> <p> Run the following command on your folder to add our remote url: </p> <h3> git remote add deploy dokku@deployer.host:{}</h3> <p> To Deploy: </p> <h3> git push deploy master </h3>".format(request.user))
     else:
         if deploy:
