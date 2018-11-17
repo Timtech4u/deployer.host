@@ -1,3 +1,4 @@
 gunicorn
 django-toolbelt
 django-crispy-forms
+sentry_sdk

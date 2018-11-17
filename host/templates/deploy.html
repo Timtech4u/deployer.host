@@ -4,24 +4,39 @@
 <head>
     <title>Deployer</title>
 </head>
+    {% load crispy_forms_tags %} {% block content %}
 
 <body>
-    {% load crispy_forms_tags %} {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+    {% load crispy_forms_tags %}
     <h1>Deployer Instruction</h1>
 
-    <h2> Windows</h2>
+    <h2 class="mt-2"> Windows</h2>
     <pre>ssh-keygen -t rsa -b 4096</pre>
-    <h2> Linux </h2>
+    <h2 class="mt-2"> Linux </h2>
     <pre> ssh-keygen -t rsa -b 4096</pre>
-    <h2> Mac </h2>
+    <h2 class="mt-2"> Mac </h2>
     <pre> ssh-keygen -t rsa -b 4096</pre>
 
     <h3> Copy SSH Key and Paste below e.g.</h3> <br>
     <pre> cat /path/to/ssh.pub</pre>
 
-    <br>
-    <form method="POST" class="post-form">{% csrf_token %} {% crispy form %}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-    {% endblock %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <p>
+                        {{ field |as_crispy_field  }}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success">Update Key</button>
+                </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>

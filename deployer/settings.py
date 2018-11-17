@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +25,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'nxcz4q8&8w-r)645dyl9huk6wta+6(7r#87b@x2zgw5w3t@hqg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'host',
+    'raven.contrib.django.raven_compat',
     'crispy_forms'
 ]
 
@@ -125,3 +128,8 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+sentry_sdk.init(
+    dsn="https://c4af59d6e4734ec8b2ddbf558650273e@sentry.io/1325103",
+    integrations=[DjangoIntegration()]
+)
