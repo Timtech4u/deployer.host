@@ -20,8 +20,8 @@ def new_deploy(request):
             ssh_key = form.cleaned_data.get('ssh_key')
             user = '{}'.format(request.user)
             os.system("{} {}".format("dokku apps:create", user))
-            os.system("echo {} >> ~/{}.pub".format(ssh_key, user))
-            os.system("dokku ssh-keys:add {} ~/{}.pub".format(user, user))
+            os.system("echo {} >> /home/dokku/{}.pub".format(ssh_key, user))
+            os.system("dokku ssh-keys:add {} /home/dokku/{}.pub".format(user, user))
             return render(request, 'success.html', {'user': user})
     else:
         form = DeployForm(instance=deploy)
