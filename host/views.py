@@ -19,7 +19,7 @@ def new_deploy(request):
             deploy.save()
             ssh_key = form.cleaned_data.get('ssh_key')
             user = '{}'.format(request.user)
-            os.system("rm -rf bae.pub")
+            os.system("rm -rf /home/host/{}.pub".format(user))
             os.system("{} {}".format("dokku apps:create", user))
             os.system("echo {} >> /home/host/{}.pub".format(ssh_key, user))
             os.system("sudo dokku ssh-keys:add {} /home/host/{}.pub".format(user, user))
