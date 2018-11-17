@@ -25,7 +25,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'nxcz4q8&8w-r)645dyl9huk6wta+6(7r#87b@x2zgw5w3t@hqg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'host',
-    'raven.contrib.django.raven_compat',
     'crispy_forms'
 ]
 
