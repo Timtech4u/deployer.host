@@ -1,2 +1,7 @@
-<pre> Get Ready to deploy your heroku-like repos </pre> <br> <p> Run the following command on your folder to add our remote url: </p> <h3> git remote add deploy dokku@deployer.host:{{user
-}}</h3> <p> To Deploy: </p> <h3> git push deploy master </h3>
+{% block content %}
+<pre>You're ready to deploy your heroku-like repos 😊😊😊 </pre> 
+<p> Run the following command on your folder to add our remote url: </p> 
+<h3> git remote add deploy dokku@deployer.host:{{user}}</h3> 
+<pre> To Deploy, run: </pre>
+<h3> git push deploy master </h3>
+{% endblock %}
