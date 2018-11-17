@@ -22,8 +22,8 @@ def new_deploy(request):
             os.system("whoami")
             os.system("pwd")
             os.system("{} {}".format("dokku apps:create", user))
-            os.system("echo {} >> /home/dokku/{}.pub".format(ssh_key, user))
-            os.system("dokku ssh-keys:add {} /home/dokku/{}.pub".format(user, user))
+            os.system("echo {} >> /home/host/{}.pub".format(ssh_key, user))
+            os.system("dokku ssh-keys:add {} /home/host/{}.pub".format(user, user))
             return render(request, 'success.html', {'user': user})
     else:
         form = DeployForm(instance=deploy)
