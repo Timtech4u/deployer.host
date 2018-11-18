@@ -19,6 +19,9 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
+    path('superuser/', admin.site.urls),
     path('', include('host.urls')),
 ]
+
+admin.site.site_header = ‘Deployer Administration’
+admin.site.site_title = ‘Deployer Administration’
