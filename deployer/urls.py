@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('host.urls')),
 ]
 
-admin.site.site_header = ‘Deployer Administration’
-admin.site.site_title = ‘Deployer Administration’
+
+admin.site.site_header = 'Deployer Administration'
+admin.site.site_title = 'Deployer Administration'
